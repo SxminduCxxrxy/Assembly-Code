@@ -524,6 +524,16 @@
                 }
             }
 
+            function memName(name) {
+                for (i = 0; i < registerNames.length; i++) {
+                    if (name == regkey[i]) {
+                        registers[i].innerHTML = reg[name];
+                        registers[i].style.background = "red";
+                        return;
+                    }
+                }
+            }
+
             function mov(opr) {
                 reg[opr[0]] = reg[opr[1]];
                 reg['pc'] = reg['pc'] + 1;
@@ -729,11 +739,20 @@
                     window[op](memory[i].slice(1));
                 
                     reg['timer']=reg['timer']-1;
+                    regName('timer');
                     if (reg['int']==1 && reg['timer']==0){
                         reg['sp'] = reg['sp'] + 1;
+                        regName('sp');
+                        
                         memory[reg['sp']] = reg['pc'];
+                        memorylocations[reg['sp']].innerHTML = memory[reg['sp']];
+                        memorylocations[reg['sp']].style.background = "red";
+
                         reg['pc'] = reg['ivec'];
+                        regName('pc');
+
                         reg['int'] = 0;
+                        regName('int');
                     }
                 }
 
