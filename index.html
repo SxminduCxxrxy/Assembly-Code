@@ -783,7 +783,12 @@
                     }
                 }
                 prev.innerHTML = memory[reg['pc']-1].join(" ");
-                next.innerHTML = memory[reg['pc']].join(" ");
+                if (reg['halt']==true) {
+                        next.innerHTML = " ";
+                }
+                else{
+                        next.innerHTML = memory[reg['pc']].join(" ");
+                }   
             }   
 
             input.addEventListener('change', () => {
