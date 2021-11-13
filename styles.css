@@ -1,0 +1,120 @@
+section.buttons {
+    margin: 2em;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+label.upload {
+    font-family: 'Champagne Limousines';
+    font-weight: 500;
+    font-size: 1em;
+    background-color: #FCAF58;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    width: 3em;
+    padding: 1em 2em;
+    cursor: pointer;
+    margin: 0em 2em;
+    float: left;
+}
+
+label.upload:hover{
+    background-color: #ffffff;
+    color: #FCAF58;
+    border: 1px solid #FCAF58;
+}
+
+.nxt-btn,.exe-btn{
+    font-family: 'Champagne Limousines';
+    font-weight: 500;
+    font-size: 1em;
+    background-color: #FCAF58;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    width: 10em;
+    padding: 1em 2em;
+    cursor: pointer;
+}
+
+.nxt-btn:hover,.exe-btn:hover{
+    background-color: #ffffff;
+    color: #FCAF58;
+    border: 1px solid #FCAF58;
+}
+
+label.next-int{
+    font-family: 'Champagne Limousines';
+    font-weight: 500;
+    font-size: 1em;
+    background-color: #FCAF58;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px 0 0 9px;
+    width: 10em;
+    padding: 1em 2em;
+    cursor: pointer;
+}
+
+.next-int-value{
+    font-family: 'Champagne Limousines';
+    font-weight: 500;
+    font-size: 1em;
+    background-color: #ffffff;
+    color: #FCAF58;
+    border: 1px solid #FCAF58;
+    border-radius: 0 9px 9px 0;
+    position: relative;
+    padding: 0.95em 2em;
+    left: -1em;
+}
+
+
+h1{
+    font-family:'Century Gothic', Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-size: 3em;
+    letter-spacing: 0.5em;
+    opacity: 0.9;
+}
+
+.registers .register-block {
+    background-color: black;
+    color: white;
+    font-family: 'Champagne Limousines';
+    width: 5em;
+    margin: 1em;
+    padding: 1em 0em;
+    display: inline-table;
+}
+
+.registers .register-block span#regID {
+    background: #0c5a08;
+    padding: 1em 1.5em;
+}
+
+.registers .register-block span.value {
+    padding: 1em 1.5em;
+}
+
+.memory .memory-block {
+    background-color: black;
+    color: white;
+    font-family: 'Champagne Limousines';
+    width: 5em;
+    margin: 1em;
+    padding: 1em 0em;
+    display: inline-table;
+}
+
+.memory .memory-block span.memID {
+    background: #0c5a08;
+    padding: 1em 1.5em;
+}
+
+.memory .memory-block span.value {
+    padding: 1em 1.5em;
+}

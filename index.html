@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Assembly ExE</title>
+        <link rel="stylesheet" href="Fonts/stylesheet.css">
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+
+        <section class="buttons">
+            <form enctype="multipart/form-data">
+                <label class="upload" for="asm-file-input">UPLOAD</label>
+                <input id="asm-file-input" type=file accept=".asm" name="files[]" size=30>
+            </form>
+
+            <!-- <textarea class="form-control" rows=20 cols=100></textarea></br> -->
+                
+            <button onclick="runm_nxt()" class="nxt-btn">NEXT</button>
+            <button onclick="runm()" class="exe-btn">EXECUTE</button>
+            
+            <label class="next-int">Next Instruction</label> 
+            <span class="next-int-value" id="next-int"></span>
+
+        </section>
+
+        <section class="registers">
+            <h1>REGISTERS</h1>
+            <div class='register-block'>
+                <span class='a' id='regID'>a</span>
+                <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='b' id='regID'>b</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='c' id='regID'>c</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='d' id='regID'>d</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='e' id='regID'>e</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='f' id='regID'>f</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='sp' id='regID'>sp</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='acc' id='regID'>acc</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='pc' id='regID'>pc</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='ivec' id='regID'>ivec</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='int' id='regID'>int</span>
+                    <span class='value' id='reg'>0</span>
+            </div>
+            <div class='register-block' style="width: 9em;">
+                    <span class='timer' id='regID'>timer</span>
+                    <span class='value' id='reg' style="padding: 1em 1.9em;">0</span>
+            </div>
+            <div class='register-block'>
+                    <span class='halt' id='regID'>halt</span>
+                    <span class='value' id='reg'>false</span>
+            </div>
+        </section>
+        
+        <section class="memory">
+            <h1>MEMORY</h1>
+            <div class='memory-block'>
+                <span class='memID'>00</span>
+                <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>01</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>02</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>03</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>04</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>05</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>06</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>07</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>08</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>09</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>10</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>11</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>12</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>13</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>14</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>15</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>16</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>17</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>18</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>19</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>20</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>21</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>22</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>23</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>24</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>25</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>26</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>27</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>28</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>29</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>30</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>31</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>32</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>33</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>34</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>35</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>36</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>37</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>38</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>39</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>40</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>41</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>42</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>43</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>44</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>45</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>46</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>47</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>48</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>49</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>50</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>51</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>52</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>53</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>54</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>55</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>56</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>57</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>58</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>59</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>60</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>61</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>62</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>63</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>64</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>65</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>66</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>67</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>68</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>69</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>70</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>71</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>72</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>73</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>74</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>75</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>76</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>77</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>78</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>79</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>80</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>81</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>82</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>83</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>84</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>85</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>86</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>87</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>88</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>89</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>90</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>91</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>92</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>93</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>94</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>95</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>96</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>97</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>98</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+            <div class='memory-block'>
+                    <span class='memID'>99</span>
+                    <span class='value' id='mem'>0</span>
+            </div>
+        </section>  
+
+        <script>
+            let input = document.querySelector('input')
+
+            let textarea = document.querySelector('textarea')
+
+            let registers = document.querySelectorAll('#reg')
+
+            let registerNames = document.querySelectorAll('#regID')
+
+            const regkey=[];
+            for (i = 0; i < registerNames.length; i++) {
+                regkey[i] = registerNames[i].className
+                
+            }
+
+            //console.log(regkey)
+
+            let memorylocations = document.querySelectorAll('#mem')
+
+            let next = document.getElementById("next-int")
+
+            const memory = [];
+            var reg={'a':0, 'b':0, 'c':0, 'd':0, 'e':0, 'f':0, 'sp':0, 'acc':0, 'pc':0, 'ivec':0, 'int':0, 'timer':0, 'halt':false};
+
+            function regName(name) {
+                for (i = 0; i < registerNames.length; i++) {
+                    if (name == regkey[i]) {
+                        registers[i].innerHTML = reg[name];
+                        registers[i].style.background = "red";
+                        return;
+                    }
+                }
+            }
+
+            function mov(opr) {
+                reg[opr[0]] = reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                regName(opr[0]);
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function movv(opr){
+                reg[opr[0]] = parseInt(opr[1], 10);
+                reg['pc'] = reg['pc'] + 1;
+
+                regName(opr[0]);
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function load(opr){
+                reg[opr[0]] = memory[parseInt(opr[1], 10)];
+                reg['pc'] = reg['pc'] + 1;
+
+                regName(opr[0]);
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function loadr(opr){
+                reg[opr[0]] = memory[reg[opr[1]]];
+                reg['pc'] = reg['pc'] + 1;
+
+                regName(opr[0]);
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function store(opr){
+                memory[parseInt(opr[0], 10)]=reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                memorylocations[parseInt(opr[0], 10)].innerHTML = memory[parseInt(opr[0], 10)];
+                memorylocations[parseInt(opr[0], 10)].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function storer(opr){
+                memory[reg[opr[0]]] = reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                memorylocations[reg[opr[0]]].innerHTML = memory[reg[opr[0]]];
+                memorylocations[reg[opr[0]]].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function add(opr){
+                reg['acc'] = reg[opr[0]] + reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[7].innerHTML = reg['acc'];
+                registers[7].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function sub(opr){
+                reg['acc'] = reg[opr[0]] - reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[7].innerHTML = reg['acc'];
+                registers[7].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function mod(opr){
+                reg['acc'] = reg[opr[0]] % reg[opr[1]];
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[7].innerHTML = reg['acc'];
+                registers[7].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function call(opr){
+                reg['sp'] = reg['sp'] + 1;
+                memory[reg['sp']] = reg['pc'] + 1;
+                reg['pc'] = parseInt(opr[0], 10);
+
+                memorylocations[reg['sp']].innerHTML = memory[reg['sp']];
+                memorylocations[reg['sp']].style.background = "red";
+
+                registers[6].innerHTML = reg['sp'];
+                registers[6].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function ret(opr){
+                reg['pc'] = memory[reg['sp']];
+                reg['sp'] = reg['sp'] - 1;
+
+                registers[6].innerHTML = reg['sp'];
+                registers[6].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function out(opr){
+                console.log(reg[opr[0]]);
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function push(opr){
+                reg['sp'] = reg['sp'] + 1;
+                if (reg[opr[0]] == undefined) {
+                    memory[reg['sp']] = 0;
+                }
+                else{
+                    memory[reg['sp']] = reg[opr[0]];
+                }
+                reg['pc'] = reg['pc'] + 1;
+
+                memorylocations[reg['sp']].innerHTML = memory[reg['sp']];
+                memorylocations[reg['sp']].style.background = "red";
+
+                registers[6].innerHTML = reg['sp'];
+                registers[6].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function pop(opr){
+                reg[opr[0]] = memory[reg['sp']];
+                reg['sp'] = reg['sp'] - 1;
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[6].innerHTML = reg['sp'];
+                registers[6].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function jmp(opr){
+                reg['pc'] = parseInt(opr[0], 10);
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function jnz(opr){
+                if (reg[opr[1]]!=0)
+                    reg['pc'] = parseInt(opr[0], 10);
+                else
+                    reg['pc'] = reg['pc'] + 1;
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function halt(opr){
+                reg['halt'] = true;
+                reg['pc'] = reg['pc'] + 1;
+
+                registers[12].innerHTML = Boolean(reg['halt']);
+                registers[12].style.background = "red";
+
+                registers[8].innerHTML = reg['pc'];
+                registers[8].style.background = "red";
+            }
+
+            function runm(){
+
+                for (i = 0; i < memorylocations.length; i++) {
+                    memorylocations[i].style.background = "black";
+                }
+
+                for (i = 0; i < registers.length; i++) {
+                    registers[i].style.background = "black";
+                }
+
+                while (reg['halt'] == false){
+                    let i = reg['pc'];
+                    op = memory[i][0];
+                    window[op](memory[i].slice(1));
+                
+                    reg['timer']=reg['timer']-1;
+                    if (reg['int']==1 && reg['timer']==0){
+                        reg['sp'] = reg['sp'] + 1;
+                        memory[reg['sp']] = reg['pc'];
+                        reg['pc'] = reg['ivec'];
+                        reg['int'] = 0;
+                    }
+                }
+
+                //console.log(reg['pc']);
+                next.innerHTML = " ";
+
+            }   
+
+            function runm_nxt(){
+
+                for (i = 0; i < memorylocations.length; i++) {
+                    memorylocations[i].style.background = "black";
+                }
+
+                for (i = 0; i < registers.length; i++) {
+                    registers[i].style.background = "black";
+                }
+
+                if (reg['halt'] == false){
+                    let i = reg['pc'];
+                    op = memory[i][0];
+                    window[op](memory[i].slice(1));
+                
+                    reg['timer']=reg['timer']-1;
+                    if (reg['int']==1 && reg['timer']==0){
+                        reg['sp'] = reg['sp'] + 1;
+                        memory[reg['sp']] = reg['pc'];
+                        reg['pc'] = reg['ivec'];
+                        reg['int'] = 0;
+                    }
+                }
+                next.innerHTML = memory[reg['pc']].join(" ");
+            }   
+
+            input.addEventListener('change', () => {
+                let files = input.files;
+                
+                if (files.length == 0) return;
+                
+                const file = files[0];
+                
+                let reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    const file = e.target.result;
+                
+                    const lines = file.split(/\r\n|\n/);
+                    //textarea.value = lines.join('\n');
+                    
+                    
+                    const comm = [];
+                    var index;
+                    for (i = 0; i < lines.length-1; i++) {
+
+                        if (lines[i][0]=="#"){
+                            continue;
+                        }
+                        comm[i] = lines[i].split(" ");
+
+                        index=parseInt(comm[i][0], 10);
+                        comm[i].shift();
+                        memory[index] = comm[i];
+                        
+                    }
+                    // console.log(memory);                    
+                    // console.log(reg);
+
+                    next.innerHTML = memory[reg['pc']].join(" ");
+
+                };
+                
+                reader.onerror = (e) => alert(e.target.error.name);
+                
+                reader.readAsText(file);
+
+            });   
+
+
+        </script>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+<!-- // <p id="demo"></p>
+    // <p id="demo1"></p>
+    // <button onclick="next()">next</button>
+
+    //display.click();
+    // let display = document.getElementById('demo')
+    // console.log(memory[index].join(" "));
+    // var i=0;
+    // function next(){
+    //     display.innerHTML = memory[i++].join(" ");
+    // }  -->
+        
