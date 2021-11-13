@@ -16,7 +16,6 @@
             </form>
 
             <!-- <textarea class="form-control" rows=20 cols=100></textarea></br> -->
-            
             <button onclick="runm_nxt()" class="nxt-btn">NEXT</button>
             <button onclick="runm()" class="exe-btn" style="margin-right: 20em;">EXECUTE</button>
 
@@ -503,8 +502,6 @@
                 
             }
 
-            //console.log(regkey)
-
             let memorylocations = document.querySelectorAll('#mem')
 
             let prev = document.getElementById("prev-int")
@@ -743,7 +740,7 @@
                     if (reg['int']==1 && reg['timer']==0){
                         reg['sp'] = reg['sp'] + 1;
                         regName('sp');
-                        
+
                         memory[reg['sp']] = reg['pc'];
                         memorylocations[reg['sp']].innerHTML = memory[reg['sp']];
                         memorylocations[reg['sp']].style.background = "red";
