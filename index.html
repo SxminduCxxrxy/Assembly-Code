@@ -16,9 +16,12 @@
             </form>
 
             <!-- <textarea class="form-control" rows=20 cols=100></textarea></br> -->
-                
+            
             <button onclick="runm_nxt()" class="nxt-btn">NEXT</button>
             <button onclick="runm()" class="exe-btn">EXECUTE</button>
+
+            <label class="prev-int">Previous Instruction</label> 
+            <span class="prev-int-value" id="prev-int"></span>
             
             <label class="next-int">Next Instruction</label> 
             <span class="next-int-value" id="next-int"></span>
@@ -504,6 +507,8 @@
 
             let memorylocations = document.querySelectorAll('#mem')
 
+            let prev = document.getElementById("prev-int")
+
             let next = document.getElementById("next-int")
 
             const memory = [];
@@ -733,6 +738,7 @@
                 }
 
                 //console.log(reg['pc']);
+                prev.innerHTML = memory[reg['pc']-1].join(" ");
                 next.innerHTML = " ";
 
             }   
@@ -760,6 +766,7 @@
                         reg['int'] = 0;
                     }
                 }
+                prev.innerHTML = memory[reg['pc']-1].join(" ");
                 next.innerHTML = memory[reg['pc']].join(" ");
             }   
 
@@ -796,6 +803,7 @@
                     // console.log(memory);                    
                     // console.log(reg);
 
+                    prev.innerHTML = " ";
                     next.innerHTML = memory[reg['pc']].join(" ");
 
                 };

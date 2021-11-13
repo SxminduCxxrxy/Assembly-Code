@@ -46,7 +46,7 @@ label.upload:hover{
     border: 1px solid #FCAF58;
 }
 
-label.next-int{
+label.next-int, label.prev-int{
     font-family: 'Champagne Limousines';
     font-weight: 500;
     font-size: 1em;
@@ -59,7 +59,7 @@ label.next-int{
     cursor: pointer;
 }
 
-.next-int-value{
+.next-int-value, .prev-int-value{
     font-family: 'Champagne Limousines';
     font-weight: 500;
     font-size: 1em;
