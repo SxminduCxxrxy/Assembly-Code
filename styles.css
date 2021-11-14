@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 section.buttons {
     margin: 2em;
 }
@@ -17,7 +21,7 @@ label.upload {
     width: 3em;
     padding: 1em 2em;
     cursor: pointer;
-    margin: 0em 2em;
+    margin: 0em 0.3em 0em 2em;
     float: left;
 }
 
@@ -27,7 +31,7 @@ label.upload:hover{
     border: 1px solid #FCAF58;
 }
 
-.nxt-btn,.exe-btn{
+.rst-btn, .nxt-btn, .exe-btn{
     font-family: 'Champagne Limousines';
     font-weight: 500;
     font-size: 1em;
@@ -40,11 +44,21 @@ label.upload:hover{
     cursor: pointer;
 }
 
-.nxt-btn:hover,.exe-btn:hover{
+.rst-btn:hover, .nxt-btn:hover,.exe-btn:hover{
     background-color: #ffffff;
     color: #FCAF58;
     border: 1px solid #FCAF58;
 }
+
+.rst-btn{
+    width: 8em;
+    margin-right: 2em;
+}
+
+.exe-btn{
+    margin-right: 12em;
+}
+
 
 label.next-int, label.prev-int{
     font-family: 'Champagne Limousines';
@@ -91,6 +105,10 @@ h1{
     display: inline-table;
 }
 
+.registers .register-block:nth-child(13){
+    width: 9.3em;
+}
+
 .registers .register-block span#regID {
     background: #0c5a08;
     padding: 1em 1.5em;
@@ -98,6 +116,10 @@ h1{
 
 .registers .register-block span.value {
     padding: 1em 1.5em;
+}
+
+.registers .register-block:nth-child(13) span.value{
+    padding: 1em 1.9em;
 }
 
 .memory .memory-block {

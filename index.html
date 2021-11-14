@@ -16,8 +16,9 @@
             </form>
 
             <!-- <textarea class="form-control" rows=20 cols=100></textarea></br> -->
+            <button onclick="window.location.reload()" class="rst-btn">RESET</button>
             <button onclick="runm_nxt()" class="nxt-btn">NEXT</button>
-            <button onclick="runm()" class="exe-btn" style="margin-right: 20em;">EXECUTE</button>
+            <button onclick="runm()" class="exe-btn">EXECUTE</button>
 
             <label class="prev-int">Previous Instruction</label> 
             <span class="prev-int-value" id="prev-int"></span>
@@ -73,9 +74,9 @@
                     <span class='int' id='regID'>int</span>
                     <span class='value' id='reg'>0</span>
             </div>
-            <div class='register-block' style="width: 9.3em;">
+            <div class='register-block'>
                     <span class='timer' id='regID'>timer</span>
-                    <span class='value' id='reg' style="padding: 1em 1.9em;">0</span>
+                    <span class='value' id='reg'>0</span>
             </div>
             <div class='register-block'>
                     <span class='halt' id='regID'>halt</span>
